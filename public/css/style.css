@@ -17,6 +17,10 @@ a{
   color: rgba(82,179,217,0.9);
 }
 
+.hidden {
+  display: none;
+}
+
 /* M E N U */
 
 .menu {

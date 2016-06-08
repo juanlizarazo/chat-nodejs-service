@@ -12,7 +12,7 @@
   <div class="name">Juan</div>
   <div class="last">18:09</div>
 </div>
-<ol class="chat">
+<ol id="chat" class="chat">
   <li class="other">
     <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
     <div class="msg">
@@ -44,18 +44,33 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="/lib/jquery/dist/jquery.js"></script>
 
+<li class="other message-box hidden">
+  <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+  <div class="msg">
+    <!--message goes here-->
+  </div>
+</li>
+
 <script>
   var socket = io();
   var message = null;
+  var messageBox = $('.message-box');
+  var newMessage = null;
 
   $('#message').keydown(function(event) {
-    message = $('#message');
-
     if (event.keyCode == 13) {
-      socket.emit('chat message', message.val());
-      message.val('');
+      message = $('#message');
+      socket.emit('chat message', message.val()); // emit #message value
+      message.val(''); // clear
       return false;
     }
+  });
+
+  socket.on('chat message', function(msg) {
+    console.log(msg);
+    newMessage = messageBox.clone().removeClass('hidden');
+    newMessage.children('.msg').text(msg);
+    $('#chat').append(newMessage);
   });
 </script>
 </body>
