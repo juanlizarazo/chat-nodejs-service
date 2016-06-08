@@ -6,7 +6,7 @@
   <title>chat-nodejs-ui</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-</html>
+<body>
 <div class="menu">
   <div class="back"><i class="fa fa-chevron-left"></i> <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAXWAAAAJGE0NWM4YzRlLWNkZTUtNDM0NC1hOTQ5LTMwZWI1ZDc4ODA0Mg.jpg" draggable="false"/></div>
   <div class="name">Juan</div>
@@ -39,3 +39,9 @@
   </li>
 </ol>
 <input class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+</body>
+</html>
