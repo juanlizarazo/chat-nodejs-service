@@ -1,0 +1,29 @@
+{
+  "name": "chat-nodejs-service",
+  "author": "Juan Lizarazo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "lint": "eslint * --quiet --fix || true",
+    "docker": "docker run --rm -ti -p 8080:8080 --name chat-nodejs-service chat-nodejs-service",
+    "docker:build": "docker build -t am-geo .",
+    "//": "Use for dev, sync changes on container",
+    "docker:mount": "docker run --rm -ti -p 8080:8080 -v $PWD:/usr/src/app --name chat-nodejs-service chat-nodejs-service ./node_modules/.bin/nodemon"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "config": "^1.19.0",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "http-status-codes": "^1.0.6",
+    "js-yaml": "^3.5.3",
+    "jsonwebtoken": "^5.7.0",
+    "morgan": "~1.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.2.0",
+    "jasmine": "^2.4.1",
+    "nodemon": "^1.9.0"
+  }
+}
