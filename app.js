@@ -44,7 +44,7 @@ if (app.get('env') === 'development') {
     res.json(err);
   });
 }
-
+'annonymous'
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
