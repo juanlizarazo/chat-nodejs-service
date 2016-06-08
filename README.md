@@ -7,9 +7,15 @@ web-ui: html/css/jquery
 
 ## How to run
 
+Open multiple browser tabs or from multiple clients,
+for the real time chat experience.
+
+Enjoy!
+
 ## Easiest (cloud version, hosted in heroku)
 
-[click here](http://chat-nodejs-service.herokuapp.com/)
+[click here for web-ui](http://chat-nodejs-service.herokuapp.com/)
+[click here for status sample api](http://chat-nodejs-service.herokuapp.com/v1/status)
 
 ### Easy
 
