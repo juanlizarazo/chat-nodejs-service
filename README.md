@@ -14,8 +14,9 @@ Enjoy!
 
 ## Easiest (cloud version, hosted in heroku)
 
-[click here for web-ui](http://chat-nodejs-service.herokuapp.com/)
-[click here for status sample api](http://chat-nodejs-service.herokuapp.com/v1/status)
+[click here for web-ui](http://chat-nodejs-service.herokuapp.com/){:target="_blank"}
+
+[click here for status sample api](http://chat-nodejs-service.herokuapp.com/v1/status){:target="_blank"}
 
 ### Easy
 
@@ -54,5 +55,6 @@ localhost:8080/v1/status
 ... I used to speed things up and make this a 3 hour
 project:
 
-[socket.io](http://socket.io/get-started/)
-[ui html template](https://codepen.io/Varo/pen/gbZzgr)
+[socket.io](http://socket.io/get-started/){:target="_blank"}
+
+[ui html template](https://codepen.io/Varo/pen/gbZzgr){:target="_blank"}
