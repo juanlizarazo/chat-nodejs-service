@@ -8,7 +8,7 @@ var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var demoRoute = require('./routes/v1/demos-route');
+var statusRoute = require('./routes/v1/status-route');
 
 var app = express();
 
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 /**
  * Routes
  */
-app.use('/', demoRoute);
+app.use('/', statusRoute);
 
 /**
  * Error handlers
@@ -44,7 +44,7 @@ if (app.get('env') === 'development') {
     res.json(err);
   });
 }
-'annonymous'
+
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {

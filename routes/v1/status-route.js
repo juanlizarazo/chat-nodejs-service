@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 
-var demoController = require(__controllers + 'demos-controller');
+var statusController = require(__controllers + 'status-controller');
 
 /**
  * @api {get} /v1/demos Get demos
@@ -11,6 +11,6 @@ var demoController = require(__controllers + 'demos-controller');
  * @apiName getDemo
  * @apiGroup Demo
  */
-router.get('/v1/demos', demoController.getAllDemos);
+router.get('/v1/status', statusController.getStatusCollection);
 
 module.exports = router;
