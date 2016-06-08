@@ -7,6 +7,10 @@ web-ui: html/css/jquery
 
 ## How to run
 
+## Easiest (cloud version, hosted in heroku)
+
+(click here)[http://chat-nodejs-service.herokuapp.com/]
+
 ### Easy
 
 You need Docker and node/npm
