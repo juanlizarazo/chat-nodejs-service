@@ -18,6 +18,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 /**
+ * Static assets
+ */
+app.get('/', function(req, res){
+  res.sendFile(__base + 'public/index.html');
+});
+
+/**
  * Routes
  */
 app.use('/', statusRoute);
