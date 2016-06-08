@@ -9,7 +9,7 @@ web-ui: html/css/jquery
 
 ## Easiest (cloud version, hosted in heroku)
 
-(click here)[http://chat-nodejs-service.herokuapp.com/]
+[click here](http://chat-nodejs-service.herokuapp.com/)
 
 ### Easy
 
