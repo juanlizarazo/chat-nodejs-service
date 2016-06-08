@@ -1,14 +1,14 @@
 'use strict';
 
 global.__base = __dirname + '/';
-global.__controllers = __base + 'app/controllers/';
-global.__services = __base + 'app/services/';
+global.__controllers = __base + 'src/controllers/';
+global.__services = __base + 'src/services/';
 
 var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var demoRoute = require('./routes/v1/demo-route');
+var demoRoute = require('./routes/v1/demos-route');
 
 var app = express();
 
