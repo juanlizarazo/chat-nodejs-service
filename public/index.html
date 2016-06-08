@@ -69,7 +69,8 @@
   socket.on('chat message', function(payload) {
     console.log(payload);
     newMessageDom = messageBox.clone();
-    formattedMessage = '<p>' + payload.message + '</p>' + '<time>' + Date() + '</time>';
+    formattedMessage = '<p>' + payload.message + '</p>'
+    formattedMessage += '<time> User: ' + payload.user + ' &middot; ' + Date() + '</time>';
     newMessageDom.children('.msg').html(formattedMessage);
 
     if (payload.user !== user) {
