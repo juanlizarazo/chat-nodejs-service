@@ -8,35 +8,12 @@
 </head>
 <body>
 <div class="menu">
-  <div class="back"><i class="fa fa-chevron-left"></i> <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAXWAAAAJGE0NWM4YzRlLWNkZTUtNDM0NC1hOTQ5LTMwZWI1ZDc4ODA0Mg.jpg" draggable="false"/></div>
-  <div class="name">Juan</div>
-  <div class="last">18:09</div>
+  <div class="name">chat-nodejs-service</div>
+  <div class="last">By Juan Lizarazo</div>
 </div>
 <ol id="chat" class="chat">
-  <li class="other">
-    <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
-    <div class="msg">
-      <p>Test <emoji class="pizza"/></p>
-      <time>20:17</time>
-    </div>
-  </li>
-  <li class="self">
-    <div class="avatar"><img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAXWAAAAJGE0NWM4YzRlLWNkZTUtNDM0NC1hOTQ5LTMwZWI1ZDc4ODA0Mg.jpg" draggable="false"/></div>
-    <div class="msg">
-      <p>Response placeholder <emoji class="books"/></p>
-      <time>20:18</time>
-    </div>
-  </li>
-
-  <div class="day">Date placeholder</div>
-
-  <li class="other">
-    <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
-    <div class="msg">
-      <p>Test</p>
-      <time>18:07</time>
-    </div>
-  </li>
+  <div id='day' class="day">Date placeholder</div>
+  <!--Messages are appended here-->
 </ol>
 
 <input class="textarea" id="message" type="text" placeholder="Type here!"/><div class="emojis"></div>
@@ -44,33 +21,69 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="/lib/jquery/dist/jquery.js"></script>
 
-<li class="other message-box hidden">
-  <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+<li class="other self message-box hidden">
+  <div class="avatar"></div>
   <div class="msg">
     <!--message goes here-->
   </div>
 </li>
 
+<img class="img-other hidden" src="http://i.imgur.com/DY6gND0.png" draggable="false"/>
+<img
+    class = "img-self hidden"
+    src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAXWAAAAJGE0NWM4YzRlLWNkZTUtNDM0NC1hOTQ5LTMwZWI1ZDc4ODA0Mg.jpg" draggable="false"/>
+
 <script>
   var socket = io();
+
   var message = null;
-  var messageBox = $('.message-box');
-  var newMessage = null;
+  var newMessageDom = null;
+  var messagePayload = null;
+  var formattedMessage = null;
+
+  // Clone DOM template elements used to append messages
+  // Remove classes to avoid modifying appended ones
+  var messageBox = $('.message-box').clone().removeClass('hidden message-box');
+  var imgSelf = $('.img-self').clone().removeClass('hidden img-self');
+  var imgOther = $('.img-other').clone().removeClass('hidden img-other');
+
+  // Display formatted time stamp on top of chat window
+  $('#day').text(Date());
+
+  // Create ramdom username
+  // TODO: Support user names chosen by user
+  // Used to determine classes to use to display messages: self/other
+  var user = Math.random().toString(36).substring(2, 9);
 
   $('#message').keydown(function(event) {
     if (event.keyCode == 13) {
       message = $('#message');
-      socket.emit('chat message', message.val()); // emit #message value
+      messagePayload = {
+        user: user,
+        message: message.val()
+      };
+
+      socket.emit('chat message', messagePayload);
       message.val(''); // clear
       return false;
     }
   });
 
-  socket.on('chat message', function(msg) {
-    console.log(msg);
-    newMessage = messageBox.clone().removeClass('hidden');
-    newMessage.children('.msg').text(msg);
-    $('#chat').append(newMessage);
+  socket.on('chat message', function(payload) {
+    console.log(payload);
+    newMessageDom = messageBox.clone();
+    formattedMessage = '<p>' + payload.message + '</p>' + '<time>' + Date() + '</time>';
+    newMessageDom.children('.msg').html(formattedMessage);
+
+    if (payload.user !== user) {
+      newMessageDom.removeClass('self');
+      newMessageDom.children('.avatar').html(imgOther);
+    } else {
+      newMessageDom.removeClass('other');
+      newMessageDom.children('.avatar').html(imgSelf);
+    }
+
+    $('#chat').append(newMessageDom);
   });
 </script>
 </body>
