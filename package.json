@@ -10,9 +10,11 @@
     "docker:build": "docker build -t chat-nodejs-service .",
     "//": "Use for dev, sync changes on container",
     "docker:mount": "docker run --rm -ti -p 8080:8080 -v $PWD:/usr/src/app --name chat-nodejs-service chat-nodejs-service ./node_modules/.bin/nodemon"
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
+    "bower": "0.6.x",
     "config": "^1.19.0",
     "debug": "~2.2.0",
     "express": "~4.13.1",
