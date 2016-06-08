@@ -1,0 +1,12 @@
+# Database settings
+database:
+  client: mysql
+  database: am_geo
+  host: mysql-host
+  user:
+  password:
+  charset: utf8
+  migrations_tablename: schema_migrations
+  pool:
+    min: 2
+    max: 10
