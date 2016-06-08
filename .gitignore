@@ -42,3 +42,6 @@ node_modules
 
 # Api documentation
 apidoc
+
+# bower
+public/lib
