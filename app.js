@@ -20,9 +20,7 @@ app.use(bodyParser.json());
 /**
  * Static assets
  */
-app.get('/', function(req, res){
-  res.sendFile(__base + 'public/index.html');
-});
+app.use(express.static('public'));
 
 /**
  * Routes
