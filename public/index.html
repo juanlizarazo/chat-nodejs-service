@@ -77,10 +77,10 @@
 
     if (payload.user !== user) {
       newMessageDom.removeClass('self');
-      newMessageDom.children('.avatar').html(imgOther);
+      newMessageDom.children('.avatar').html(imgOther.clone());
     } else {
       newMessageDom.removeClass('other');
-      newMessageDom.children('.avatar').html(imgSelf);
+      newMessageDom.children('.avatar').html(imgSelf.clone());
     }
 
     $('#chat').append(newMessageDom);
