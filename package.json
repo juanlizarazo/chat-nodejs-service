@@ -3,6 +3,9 @@
   "author": "Juan Lizarazo",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "4.4.4"
+  }
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint * --quiet --fix || true",
