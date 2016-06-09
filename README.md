@@ -1,4 +1,6 @@
-# chat-nodejs-sevice by Juan Lizarazo
+# chat-nodejs-sevice
+
+Basic demo for chat service built on nodejs and socket.io (3h project)
 
 ## Stack overview
 
