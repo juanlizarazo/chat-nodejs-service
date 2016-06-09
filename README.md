@@ -20,6 +20,7 @@ Enjoy!
 
 [click here for status sample api](http://chat-nodejs-service.herokuapp.com/v1/status)
 
+[click here to visit desktop client app](https://github.com/juanlizarazo/chat-electron-client)
 ### Easy
 
 You need Docker and node/npm
