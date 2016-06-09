@@ -2,8 +2,8 @@
 
 ## Stack overview
 
-service: node, npm, docker, expressjs, socket.io
-web-ui: html/css/jquery
+- service: node, npm, docker, expressjs, socket.io
+- web-ui: html/css/jquery (Yep, no fancy front end, I wanted to keep it under a 3h time to build project).
 
 ## How to run
 
